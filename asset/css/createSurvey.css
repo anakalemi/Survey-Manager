@@ -1,0 +1,50 @@
+span {
+    display: block;
+    font-size: 20px;
+    line-height: 28px;
+    color: #1a1f36;
+}
+label {
+    margin-bottom: 10px;
+}
+
+.field input[type="text"], select {
+    font-size: 16px;
+    line-height: 28px;
+    padding: 8px 16px;
+    width: 100%;
+    min-height: 44px;
+    border: unset;
+    border-radius: 4px;
+    outline-color: rgb(84 105 212 / 0.5);
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0) 0 0 0 0,
+    rgba(0, 0, 0, 0) 0 0 0 0,
+    rgba(0, 0, 0, 0) 0 0 0 0,
+    rgba(60, 66, 87, 0.16) 0 0 0 1px,
+    rgba(0, 0, 0, 0) 0 0 0 0,
+    rgba(0, 0, 0, 0) 0 0 0 0,
+    rgba(0, 0, 0, 0) 0 0 0 0;
+}
+
+input[type="button"], input[type="reset"] {
+    cursor: pointer;
+    font-weight: 600;
+    background-color:  rgba(60, 66, 87, 0.16);
+    color: #34495e;
+}
+
+input[type="button"]:hover,  input[type="reset"]:hover {
+    background-color: #e3e8ee;
+    color: #1a1f36;
+}
+
+input[type="submit"] {
+    background-color: rgb(84, 105, 212);
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
+input[type="submit"]:hover {
+    background-color: rgb(62, 76, 152);
+}
