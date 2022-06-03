@@ -88,8 +88,6 @@ abstract class GenericDAO implements IDAO
                 }
                 $prop->setAccessible(false);
             }
-            print_r($values);
-            print_r($query);
             $this->dbh->prepare($query)->execute($values);
             return $this->dbh->lastInsertId();
         } catch (Exception $e) {
