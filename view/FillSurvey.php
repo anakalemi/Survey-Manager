@@ -51,29 +51,30 @@ if (empty($currentUser) || $currentUser->getUserId() == null) {
                         ?>
                         <div>
                             <div class="field padding-bottom--15 padding-top--15">
-                                <label for="question" style="width: 100%"><?php echo $question->getDescription() ?></label>
-                                    <?php
-                                    switch ($question->getType()) {
-                                        case Question::TYPE_TEXT:
-                                            ?>
-                                            <input type="text"
-                                                   name="answer[<?php echo $question->getId() ?>]" required>
-                                            <?php
-                                            break;
-                                        case Question::TYPE_NUMBER:
-                                            ?>
-                                            <input type="number" style="width: 100%"
-                                                   name="answer[<?php echo $question->getId() ?>]" required>
-                                            <?php
-                                            break;
-                                        case Question::TYPE_DATE:
-                                            ?>
-                                            <input type="date" style="width: 100%"
-                                                   name="answer[<?php echo $question->getId() ?>]" required>
-                                            <?php
-                                            break;
-                                    }
-                                    ?>
+                                <label for="question"
+                                       style="width: 100%"><?php echo $question->getDescription() ?></label>
+                                <?php
+                                switch ($question->getType()) {
+                                    case Question::TYPE_TEXT:
+                                        ?>
+                                        <input type="text"
+                                               name="answer[<?php echo $question->getId() ?>]" required>
+                                        <?php
+                                        break;
+                                    case Question::TYPE_NUMBER:
+                                        ?>
+                                        <input type="number" style="width: 100%"
+                                               name="answer[<?php echo $question->getId() ?>]" required>
+                                        <?php
+                                        break;
+                                    case Question::TYPE_DATE:
+                                        ?>
+                                        <input type="date" style="width: 100%"
+                                               name="answer[<?php echo $question->getId() ?>]" required>
+                                        <?php
+                                        break;
+                                }
+                                ?>
                             </div>
                         </div>
                         <?php
@@ -123,7 +124,6 @@ if (isset($_POST["save"])) {
         exit();
     }
 }
-
 ?>
 </body>
 </html>

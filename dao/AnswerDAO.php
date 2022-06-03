@@ -10,7 +10,8 @@ class AnswerDAO extends GenericDAO
         return 'Answer';
     }
 
-    public function getAnswersByEntryID($entry_id): array {
+    public function getAnswersByEntryID($entry_id): array
+    {
         $query = "SELECT * FROM answer WHERE entry_id = :id;";
         $stmt = $this->dbh->prepare($query);
         $stmt->bindParam(':id', $entry_id);

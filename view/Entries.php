@@ -61,7 +61,7 @@ if (empty($currentUser) || $currentUser->getUserId() == null) {
 
                 if ((empty($currentSurvey)
                         || $currentSurvey->isPublished() == Survey::NOT_PUBLISHED)
-                        || $numberOfEntries == 0) {
+                    || $numberOfEntries == 0) {
                     header("Location: Home.php");
                     exit();
                 }
@@ -82,14 +82,14 @@ if (empty($currentUser) || $currentUser->getUserId() == null) {
                         foreach ($answerArray as $answer) {
                             if ($answer->getQuestionId() == $question->getId()) {
                                 $currentEntry = $entryDAO->findById($answer->getEntryId());
-                                $entryUser = $userDAO ->findById($currentEntry->getUserId() ?? -1);
+                                $entryUser = $userDAO->findById($currentEntry->getUserId() ?? -1);
                                 if (!is_null($entryUser)) {
                                     $entryUserName = $entryUser->getName();
                                 } else {
                                     $entryUserName = 'anon.';
                                 }
                                 ?>
-                                <label><?php echo $entryUserName;?></label>
+                                <label><?php echo $entryUserName; ?></label>
                                 <input style="width: 100%" type="text" disabled
                                        value="<?php echo $answer->getContent(); ?>">
 

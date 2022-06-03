@@ -19,7 +19,6 @@ abstract class GenericDAO implements IDAO
             DBConstants::DB_USER,
             DBConstants::DB_PASS);
         $this->dbh = $this->db->getDbh();
-
         $this->reflection = new ReflectionClass($this->getEntityClass());
     }
 
@@ -35,11 +34,10 @@ abstract class GenericDAO implements IDAO
                 }
                 return $result;
             }
-            return [];
         } catch (Exception $e) {
             echo $e->getMessage();
-            return [];
         }
+        return [];
     }
 
     public function findById($id)
@@ -53,43 +51,45 @@ abstract class GenericDAO implements IDAO
                     return $this->mapToEntity($row);
                 }
             }
-            return null;
         } catch (Exception $e) {
             echo $e->getMessage();
-            return null;
         }
+        return null;
     }
 
     public function insert($entity)
     {
+        $properties = $this->reflection->getProperties(ReflectionProperty::IS_PRIVATE);
         try {
             $query = "INSERT INTO " . strtolower($this->getEntityClass()) . " (";
-            $fields = $this->getFields();
-            for ($i = 0; $i < sizeof($fields); $i++) {
-                if ($fields[$i] != $this->getIdField()) {
-                    $query = $query . $fields[$i];
-                    if ($i < sizeof($fields) - 1) {
-                        $query = $query . ", ";
+            foreach ($properties as $i => $prop) {
+                if ($prop->name != $this->getIdField()) {
+                    $query .= $prop->name;
+                    if ($i < sizeof($properties) - 1) {
+                        $query .= ", ";
                     }
                 }
             }
-
             $query = $query . ") VALUES (";
-            for ($i = 0; $i < sizeof($fields); $i++) {
-                if ($fields[$i] != $this->getIdField()) {
-                    $query = $query . "?";
-                    if ($i < sizeof($fields) - 1) {
-                        $query = $query . ", ";
+            foreach ($properties as $i => $prop) {
+                if ($prop->name != $this->getIdField()) {
+                    $query .= "?";
+                    if ($i < sizeof($properties) - 1) {
+                        $query .= ", ";
                     }
                 }
             }
-            $query = $query . ");";
+            $query .= ");";
             $values = [];
-            for ($i = 0; $i < sizeof($fields); $i++) {
-                if ($fields[$i] != $this->getIdField()) {
-                    array_push($values, $entity->{$fields[$i]});
+            foreach ($properties as $prop) {
+                $prop->setAccessible(true);
+                if ($prop->name != $this->getIdField()) {
+                    array_push($values, $prop->getValue($entity));
                 }
+                $prop->setAccessible(false);
             }
+            print_r($values);
+            print_r($query);
             $this->dbh->prepare($query)->execute($values);
             return $this->dbh->lastInsertId();
         } catch (Exception $e) {
@@ -100,30 +100,34 @@ abstract class GenericDAO implements IDAO
 
     public function update($entity)
     {
+        $properties = $this->reflection->getProperties(ReflectionProperty::IS_PRIVATE);
         try {
             $query = "UPDATE " . strtolower($this->getEntityClass()) . " SET ";
-            $fields = $this->getFields();
-            for ($i = 0; $i < sizeof($fields); $i++) {
-                if ($fields[$i] != $this->getIdField()) {
-                    $query = $query . $fields[$i] . " = ?";
-                    if ($i < sizeof($fields) - 1) {
-                        $query = $query . ", ";
+            foreach ($properties as $i => $prop) {
+                if ($prop->name != $this->getIdField()) {
+                    $query .= $prop->name . " = ?";
+                    if ($i < sizeof($properties) - 1) {
+                        $query .= ", ";
                     }
                 }
             }
             $query = $query . " WHERE " . $this->getIdField() . " = ?" . ";";
 
             $values = [];
-            for ($i = 0; $i < sizeof($fields); $i++) {
-                if ($fields[$i] != $this->getIdField()) {
-                    array_push($values, $entity->{$fields[$i]});
+            foreach ($properties as $prop) {
+                $prop->setAccessible(true);
+                if ($prop->name != $this->getIdField()) {
+                    array_push($values, $prop->getValue($entity));
+                } else {
+                    $id = $prop->getValue($entity);
                 }
+                $prop->setAccessible(false);
             }
-            array_push($values, $entity->{$this->getIdField()});
-
+            array_push($values, $id);
             $this->dbh->prepare($query)->execute($values);
         } catch (Exception $e) {
             echo $e->getMessage();
+            return null;
         }
     }
 
@@ -140,24 +144,14 @@ abstract class GenericDAO implements IDAO
 
     abstract protected function getEntityClass();
 
-    protected function getFields(): array
-    {
-        $properties = $this->reflection->getProperties(ReflectionProperty::IS_PUBLIC);
-        $fields = [];
-        foreach ($properties as $prop) {
-            array_push($fields, $prop->getName());
-        }
-        return $fields;
-    }
-
     protected function mapToEntity($row)
     {
-        $fields = $this->getFields();
-        $properties = [];
-        foreach ($fields as $field) {
-            array_push($properties, $row[$field]);
+        $properties = $this->reflection->getProperties();
+        $fields = [];
+        foreach ($properties as $prop) {
+            array_push($fields, $row[$prop->name]);
         }
-        return $this->reflection->newInstanceArgs($properties);
+        return $this->reflection->newInstanceArgs($fields);
     }
 
     protected function getIdField()

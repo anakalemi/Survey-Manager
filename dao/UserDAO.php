@@ -22,14 +22,14 @@ class UserDAO extends GenericDAO
                     return $this->mapToEntity($row);
                 }
             }
-        } catch (Exception $e)
-        {
+        } catch (Exception $e) {
             echo $e->getMessage();
         }
         return null;
     }
 
-    public function getUserByUsername($username): array {
+    public function getUserByUsername($username): array
+    {
         $query = "SELECT * FROM user WHERE username = :username;";
         $stmt = $this->dbh->prepare($query);
         $stmt->bindParam(':username', $username);

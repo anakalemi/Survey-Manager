@@ -3,9 +3,9 @@
 class Entry implements JsonSerializable
 {
 
-    public $id;
-    public $user_id;
-    public $survey_id;
+    private $id;
+    private $user_id;
+    private $survey_id;
 
     /**
      * @param $id
@@ -78,7 +78,7 @@ class Entry implements JsonSerializable
     public function getAnswers(): array
     {
         $entryDAO = new EntryDAO();
-        return $entryDAO ->getEntryAnswers($this -> getId());
+        return $entryDAO->getEntryAnswers($this->getId());
     }
 
 }

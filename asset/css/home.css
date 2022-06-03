@@ -4,49 +4,63 @@
     color: #1a1f36;
     box-sizing: border-box;
     word-wrap: break-word;
-    font-family: BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+    font-family: BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, sans-serif;
 }
+
 body {
     min-height: 100%;
     background-color: #ffffff;
 }
+
 h1 {
     letter-spacing: -1px;
 }
+
 .flex-flex {
     display: flex;
 }
+
 .align-center {
     align-items: center;
 }
+
 .center-center {
     align-items: center;
     justify-content: center;
 }
+
 .box-root {
     box-sizing: border-box;
 }
+
 .flex-direction--column {
     flex-direction: column;
 }
+
 .padding-top--64 {
     padding-top: 64px;
 }
+
 .padding-top--15 {
     padding-top: 15px;
 }
+
 .padding-top--24 {
     padding-top: 24px;
 }
+
 .padding-top--48 {
     padding-top: 48px;
 }
+
 .padding-bottom--24 {
     padding-bottom: 24px;
 }
+
 .padding-horizontal--48 {
     padding: 48px;
 }
+
 .formbg {
     position: relative;
     z-index: 1;
@@ -68,15 +82,18 @@ h1 {
 .flex-justifyContent--center {
     justify-content: center;
 }
+
 span {
     display: block;
     font-size: 20px;
     line-height: 28px;
     color: #1a1f36;
 }
+
 label {
     margin-bottom: 10px;
 }
+
 .grid--50-50 {
     display: grid;
     grid-template-columns: 50% 50%;
@@ -108,7 +125,7 @@ input[type="button"] {
     cursor: pointer;
 }
 
-input[type="button"]:hover{
+input[type="button"]:hover {
     background-color: rgb(62, 76, 152);
 }
 
@@ -173,6 +190,7 @@ a {
 .main-nav {
     margin-top: 5px;
 }
+
 .logo a,
 .main-nav a {
     padding: 10px 15px;
@@ -204,18 +222,18 @@ a {
 ==================================== */
 
 
-
-
 @media (min-width: 769px) {
     .header,
     .main-nav {
         display: flex;
     }
+
     .header {
         flex-direction: column;
         align-items: center;
     }
-    .header{
+
+    .header {
         width: 100%;
         margin: 0 auto;
     }

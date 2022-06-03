@@ -1,7 +1,7 @@
 <?php
 
-class DBConnection {
-
+class DBConnection
+{
     private $dbh;
 
     private $host;
@@ -10,7 +10,8 @@ class DBConnection {
     private $user;
     private $password;
 
-    function __construct($host, $port, $database, $user, $password) {
+    function __construct($host, $port, $database, $user, $password)
+    {
         $this->host = $host;
         $this->port = $port;
         $this->database = $database;
@@ -20,12 +21,14 @@ class DBConnection {
         $this->connect();
     }
 
-    function connect() {
-        $connectionString = "mysql:host=".$this->host.";port=".$this->port.";charset=utf8;dbname=".$this->database;
+    function connect()
+    {
+        $connectionString = "mysql:host=" . $this->host . ";port=" . $this->port . ";charset=utf8;dbname=" . $this->database;
         $this->dbh = new PDO($connectionString, $this->user, $this->password);
     }
 
-    function getDbh() {
+    function getDbh()
+    {
         return $this->dbh;
     }
 }

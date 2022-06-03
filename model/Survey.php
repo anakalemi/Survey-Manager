@@ -5,10 +5,10 @@ class Survey implements JsonSerializable
     const NOT_PUBLISHED = 0;
     const PUBLISHED = 1;
 
-    public $id;
-    public $title;
-    public $user_id;
-    public $published;
+    private $id;
+    private $title;
+    private $user_id;
+    private $published;
 
     /**
      * @param $id
@@ -100,7 +100,7 @@ class Survey implements JsonSerializable
     public function getQuestions(): array
     {
         $surveyDao = new SurveyDAO();
-        return $surveyDao ->getSurveysQuestions($this -> getId());
+        return $surveyDao->getSurveysQuestions($this->getId());
     }
 
 }

@@ -62,7 +62,8 @@ if (empty($currentUser) || $currentUser->getUserId() == null) {
                 $numberOfEntries = sizeof($entriesOfCurrentSurvey);
                 ?>
                 <span class="padding-bottom--24 flex-flex flex-justifyContent--center">
-                    <a href="<?php echo 'Entries.php?surveyID='.$currentSurveyID?>">Entries - <?php echo $numberOfEntries ?> </a></span>
+                    <a href="<?php echo 'Entries.php?surveyID=' . $currentSurveyID ?>">
+                        Entries - <?php echo $numberOfEntries ?> </a></span>
                 <?php
                 $datesArray = [];
                 $totalN = null;
@@ -111,22 +112,23 @@ if (empty($currentUser) || $currentUser->getUserId() == null) {
                                    value="<?php echo computeDatesAverage($datesArray, $numberOfEntries); ?>">
                             <?php
                             break;
+                    }
+                    }
+                    }
+                    function computeDatesAverage($datesArray, $n): string
+                    {
+                        $y = null;
+                        $m = null;
+                        $d = null;
+                        foreach ($datesArray as $date) {
+                            $y += date('Y', strtotime($date));
+                            $m += date('m', strtotime($date));
+                            $d += date('d', strtotime($date));
                         }
-                    }
-                }
-                function computeDatesAverage($datesArray, $n): string
-                {
-                    $y = null;
-                    $m = null;
-                    $d = null;
-                    foreach ($datesArray as $date) {
-                        $y += date('Y', strtotime($date));
-                        $m += date('m', strtotime($date));
-                        $d += date('d', strtotime($date));
-                    }
                         return round($y / $n) . '-' . round($m / $n) . '-' . round($d / $n);
-                }
-                ?>
+                    }
+
+                    ?>
                 </div>
             </div>
         </div>

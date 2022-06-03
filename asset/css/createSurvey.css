@@ -4,6 +4,7 @@ span {
     line-height: 28px;
     color: #1a1f36;
 }
+
 label {
     margin-bottom: 10px;
 }
@@ -30,11 +31,11 @@ label {
 input[type="button"], input[type="reset"] {
     cursor: pointer;
     font-weight: 600;
-    background-color:  rgba(60, 66, 87, 0.16);
+    background-color: rgba(60, 66, 87, 0.16);
     color: #34495e;
 }
 
-input[type="button"]:hover,  input[type="reset"]:hover {
+input[type="button"]:hover, input[type="reset"]:hover {
     background-color: #e3e8ee;
     color: #1a1f36;
 }
@@ -45,6 +46,7 @@ input[type="submit"] {
     font-weight: 600;
     cursor: pointer;
 }
+
 input[type="submit"]:hover {
     background-color: rgb(62, 76, 152);
 }

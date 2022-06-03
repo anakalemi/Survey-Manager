@@ -16,6 +16,7 @@ a {
 .main-nav {
     margin-top: 5px;
 }
+
 .logo a,
 .main-nav a {
     padding: 10px 15px;
@@ -47,18 +48,18 @@ a {
 ==================================== */
 
 
-
-
 @media (min-width: 769px) {
     .header,
     .main-nav {
         display: flex;
     }
+
     .header {
         flex-direction: column;
         align-items: center;
     }
-    .header{
+
+    .header {
         width: 100%;
         margin: 0 auto;
     }

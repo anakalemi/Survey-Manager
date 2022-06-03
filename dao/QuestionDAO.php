@@ -10,7 +10,8 @@ class QuestionDAO extends GenericDAO
         return 'Question';
     }
 
-    public function getQuestionsBySurveyID($survey_id): array {
+    public function getQuestionsBySurveyID($survey_id): array
+    {
         $query = "SELECT * FROM question WHERE survey_id = :id;";
         $stmt = $this->dbh->prepare($query);
         $stmt->bindParam(':id', $survey_id);

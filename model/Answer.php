@@ -2,10 +2,10 @@
 
 class Answer implements JsonSerializable
 {
-    public $id;
-    public $entry_id;
-    public $question_id;
-    public $content;
+    private $id;
+    private $entry_id;
+    private $question_id;
+    private $content;
 
     /**
      * @param $id

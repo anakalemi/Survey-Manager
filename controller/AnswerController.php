@@ -22,7 +22,7 @@ class AnswerController
             if ($entryID !== null) {
                 foreach (array_keys($_POST['answer']) as $index) {
                     $answer = new Answer(
-                      -1,
+                        -1,
                         $entryID,
                         $index,
                         $_POST['answer'][$index]

@@ -20,7 +20,7 @@ class EntryController
         if (isset($_POST['save']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
             $currentUser = $_SESSION['loggedUser'] ?? null;
             $currentUserID = null;
-            if($currentUser != null) {
+            if ($currentUser != null) {
                 $currentUserID = $currentUser->getUserId();
             }
 
@@ -28,7 +28,7 @@ class EntryController
 
             $allEntries = $this->dao->findAll();
             foreach ($allEntries as $e) {
-                if($e->getSurveyId() == $currentSurveyID
+                if ($e->getSurveyId() == $currentSurveyID
                     && $currentUserID !== null
                     && $e->getUserId() == $currentUserID) {
                     return self::ENTRY_ACTION_FAIL;

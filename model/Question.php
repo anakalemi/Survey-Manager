@@ -6,10 +6,10 @@ class Question implements JsonSerializable
     const TYPE_NUMBER = 1;
     const TYPE_DATE = 2;
 
-    public $id;
-    public $description;
-    public $type;
-    public $survey_id;
+    private $id;
+    private $description;
+    private $type;
+    private $survey_id;
 
     /**
      * @param $id

@@ -2,10 +2,10 @@
 
 class User implements JsonSerializable
 {
-    public $id;
-    public $name;
-    public $username;
-    public $password;
+    private $id;
+    private $name;
+    private $username;
+    private $password;
 
     /**
      * @param $id
@@ -14,7 +14,7 @@ class User implements JsonSerializable
      * @param $username
      * @param $password
      */
-    public function __construct($id ,$name, $username, $password)
+    public function __construct($id, $name, $username, $password)
     {
         $this->id = $id;
         $this->name = $name;
@@ -93,4 +93,5 @@ class User implements JsonSerializable
         return (object)get_object_vars($this);
     }
 }
+
 ?>

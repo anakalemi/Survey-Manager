@@ -65,13 +65,13 @@ class SurveyController
         if ((isset($_POST['publish'])) && $_SERVER['REQUEST_METHOD'] === 'POST') {
             $currentSurveyID = $_GET['surveyID'];
             $currentSurvey = $this->dao->findById($currentSurveyID);
-                $updatedSurvey = new Survey($currentSurvey->getId(),
-                    $currentSurvey->getTitle(),
-                    $currentSurvey->getUserId(),
-                    Survey::PUBLISHED);
+            $updatedSurvey = new Survey($currentSurvey->getId(),
+                $currentSurvey->getTitle(),
+                $currentSurvey->getUserId(),
+                Survey::PUBLISHED);
 
-                $this->dao->update($updatedSurvey);
-                return self::SURVEY_ACTION_PUBLISHED;
+            $this->dao->update($updatedSurvey);
+            return self::SURVEY_ACTION_PUBLISHED;
         }
 
     }

@@ -47,34 +47,34 @@ if (empty($currentUser) || $currentUser->getUserId() == null) {
                 foreach ($surveys as $survey) {
                     if ($survey->isPublished() == Survey::NOT_PUBLISHED) {
 
-                ?>
-                <div class="list padding-bottom--15">
-                    <form method="GET" action="EditSurvey.php">
-                        <input hidden type="hidden" name="surveyID" value="<?php echo $survey->getId() ?>">
-                        <button>
-                            <span class="span-before"><?php echo $survey->getTitle() ?></span>
-                            <span class="span-after">Edit</span>
-                        </button>
-                    </form>
-                </div>
-                <?php
+                        ?>
+                        <div class="list padding-bottom--15">
+                            <form method="GET" action="EditSurvey.php">
+                                <input hidden type="hidden" name="surveyID" value="<?php echo $survey->getId() ?>">
+                                <button>
+                                    <span class="span-before"><?php echo $survey->getTitle() ?></span>
+                                    <span class="span-after">Edit</span>
+                                </button>
+                            </form>
+                        </div>
+                        <?php
                     }
                 } ?>
                 <span class="padding-bottom--24">Published</span>
                 <?php
                 foreach ($surveys as $survey) {
                     if ($survey->isPublished() == Survey::PUBLISHED) {
-                ?>
-                <div class="list padding-bottom--15">
-                    <form method="GET" action="Statistics.php">
-                        <input hidden type="hidden" name="surveyID" value="<?php echo $survey->getId() ?>">
-                        <button>
-                            <span class="span-before"><?php echo $survey->getTitle() ?></span>
-                            <span class="span-after">View Statistics</span>
-                        </button>
-                    </form>
-                </div>
-                <?php
+                        ?>
+                        <div class="list padding-bottom--15">
+                            <form method="GET" action="Statistics.php">
+                                <input hidden type="hidden" name="surveyID" value="<?php echo $survey->getId() ?>">
+                                <button>
+                                    <span class="span-before"><?php echo $survey->getTitle() ?></span>
+                                    <span class="span-after">View Statistics</span>
+                                </button>
+                            </form>
+                        </div>
+                        <?php
                     }
                 }
                 ?>
@@ -83,7 +83,7 @@ if (empty($currentUser) || $currentUser->getUserId() == null) {
                 <?php
                 foreach ($allSurveys as $survey) {
                     $author = $userDAO->findById($survey->getUserId());
-                    if ( $author->getUserId() != $currentUser->getUserId()
+                    if ($author->getUserId() != $currentUser->getUserId()
                         && $survey->isPublished() == Survey::PUBLISHED) {
                         ?>
                         <div class="list padding-bottom--15">
