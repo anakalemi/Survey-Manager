@@ -1,27 +1,80 @@
-# SurveyManagerV2
+# SurveyManager
 
-UNYT Web System Development course project
+SurveyManager is a web-based platform designed for seamless survey management. This system offers a comprehensive
+solution tailored for both system administrators and end-users, encompassing survey creation and participation.
 
-### Project Design
+## Technologies
 
-The project is built using PHP, HTML5, CSS and JavaScript, while MySQL is used as the database management system.
+- **Frontend:** HTML5, CSS, JavaScript
 
-The project is object-oriented and built using the *MVC pattern (Model-View-Controller)* to logically structure the code
-on components that are built to handle specific development aspects of the application.
+- **Backend:** PHP
 
-Another pattern used is *DAO (Data Access Object)* which is a pattern that provides an abstract interface to the
-database. By mapping application calls to the persistence layer, DAO provides specific data operations without exposing
-details of the database.
+- **Database:** MySQL
 
-### Functionalities
+## Design Patterns
 
-The project is functional to both unregistered and system users. However, while to the system user is granted a range of
-functionalities like creating, maintaining, publishing, analyzing statistics of their survey entries and more; the
-non-registered user can only anonymously fill out surveys. For further testing purposes use either one of the
-credentials given below at the [Sign in](http://localhost/SurveyManagerV2/view/Signin.php) page,
-or [Sign Up](http://localhost/SurveyManagerV2/view/Signup.php).
+### MVC (Model-View-Controller):
 
-- Account 1
-    - **Username:** anakalemi, **Password:** 1
-- Account 2
-    - **Username:** kleapregja, **Password:** 1
+It is object-oriented and built using the *MVC pattern* to logically structure the code on components that are
+built to handle specific development aspects of the application. This trusted design pattern segments application logic:
+
+- **Model:** Handles all data-related logic.
+
+- **View:** Presents a clean and interactive UI.
+
+- **Controller:** Processes user commands.
+
+### DAO (Data Access Object):
+
+Another pattern used is *DAO* which is a pattern that provides an abstract interface to the database. By mapping
+application calls to the persistence layer, DAO provides specific data operations without exposing details of the
+database. This pattern offers abstraction and encapsulation.
+
+## Features
+
+### System Users:
+
+- **Survey Creation:** Users can design comprehensive surveys, incorporating diverse question types and structures.
+
+- **Survey Maintenance:** Allows for updates, edits, or removal of existing surveys.
+
+- **Survey Publication:** Facilitates easy sharing of surveys across users.
+
+- **Analytics Dashboard:** Visualize survey results in real-time.
+
+### Unregistered Users:
+
+- **Anonymous Participation:** Users can fill out surveys without needing an account or revealing their identity.
+
+- **Interactive Interface:** Dynamic forms adjust based on user inputs, providing a responsive survey experience.
+
+## Configuration & Setup
+
+To get the project up and running, follow these steps:
+
+1. **XAMPP:** This project uses XAMPP as a tool for MySQL and Apache. Ensure you have it installed.
+
+2. **Database Setup:** Run the provided [SQL script](database/sqlDump.sql) to populate the MySQL database.
+
+3. **Server Configuration:** Start both the MySQL and Apache servers using XAMPP to host the project locally.
+
+## Testing
+
+Explore SurveyManager:
+
+- [Sign in](http://localhost/SurveyManagerV2/view/Signin.php) with the test account.
+
+- New? Try the [Sign Up](http://localhost/SurveyManagerV2/view/Signup.php) process.
+
+**Test Account:**
+
+- **Username:** anakalemi
+- **Password:** 1
+
+## Preview
+
+<img src="images/SignIn.gif" alt="Sign In Page">
+
+<img src="images/Survey.png" alt="Fill In Survey Page">
+
+---
