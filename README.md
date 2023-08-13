@@ -73,8 +73,8 @@ Explore SurveyManager:
 
 ## Preview
 
-<img src="images/SignIn.gif" alt="Sign In Page">
+<img src="images/SignIn.gif" alt="Sign In Page" width="600">
 
-<img src="images/Survey.png" alt="Fill In Survey Page">
+<img src="images/Survey.png" alt="Fill In Survey Page" width="600">
 
 ---
